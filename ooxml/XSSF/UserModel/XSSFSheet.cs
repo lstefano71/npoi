@@ -183,6 +183,9 @@ namespace NPOI.XSSF.UserModel
                 foreach (CT_Row row in worksheetParam.sheetData.row)
                 {
                     XSSFRow r = new XSSFRow(row, this);
+                    if (r.RowNum == -1)
+                        r.RowNum = _rows.Count;
+
                     if (!_rows.ContainsKey(r.RowNum))
                         _rows.Add(r.RowNum, r);
                 }
